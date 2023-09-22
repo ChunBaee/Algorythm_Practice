@@ -12,7 +12,7 @@ def plusY(o, board):
     for i in range(0 ,o):
         cursorY += 1
         numb += 1
-        board[cursorX][cursorY] = numb
+        board[cursorX][cursorY] = str(numb)
 
 
 
@@ -24,7 +24,7 @@ def plusX(o, board):
     for i in range(0 ,o):
         cursorX += 1
         numb += 1
-        board[cursorX][cursorY] = numb
+        board[cursorX][cursorY] = str(numb)
 
 
 
@@ -36,7 +36,7 @@ def minusY(o,  board):
     for i in range(0 ,o):
         cursorY -= 1
         numb += 1
-        board[cursorX][cursorY] = numb
+        board[cursorX][cursorY] = str(numb)
 
 
 
@@ -47,9 +47,11 @@ def minusX(o, board):
     for i in range(0 ,o):
         cursorX -= 1
         numb += 1
-        board[cursorX][cursorY] = numb
+        board[cursorX][cursorY] = str(numb)
 
-
+def printboard(board):
+    for o in board:
+        print(' '.join(o))
 
 
 T = int(input())
@@ -62,13 +64,11 @@ for i in range(1, T + 1):
     way = [n-1]
     way += setWay(n)
 
-    print(way)
-
     numb = 1
     turn = 0
     cursorX = 0
     cursorY = 0
-    board[0][0] = 1
+    board[0][0] = '1'
     for o in way:
         if turn == 0:
             plusY(o, board)
@@ -80,5 +80,6 @@ for i in range(1, T + 1):
             minusX(o, board)
         turn += 1
         turn %= 4
-    print(board)
+    print(f"#{i}")
+    printboard(board)
 
